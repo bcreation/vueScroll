@@ -3,7 +3,9 @@
 > A small template for vueJS to scroll full page 
 
 > Make with Vue CLI and VueRouter
+
 > checkout for simple use with vueJS script import 
+
 > See how it works on https://codepen.io/bcreation/pen/dZmEZO
 
 ## Build Setup
