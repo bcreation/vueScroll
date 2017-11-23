@@ -4,7 +4,7 @@
 
 > Make with Vue CLI and VueRouter
 
-> checkout for simple use with vueJS script import 
+> checkout for simple use without vueCLI script import : https://github.com/bcreation/vueScrollSimple
 
 > See how it works on https://codepen.io/bcreation/pen/dZmEZO
 
