@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     handleScroll (event) {
-      this.$parent.nextSection(this.$el)
+      this.$parent.nextSection(event, this.$el)
     }
   }
 }

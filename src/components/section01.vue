@@ -15,10 +15,10 @@ export default {
     this.$el.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
-    handleScroll (event) {
+    handleScroll (e) {
       // first section
-      if (event.wheelDelta.toString().indexOf('-') === 0) {
-        this.$parent.nextSection(this.$el)
+      if (e.deltaY.toString().indexOf('-') !== 0) {
+        this.$parent.nextSection(e, this.$el)
       }
     }
   }

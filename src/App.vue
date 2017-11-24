@@ -17,24 +17,19 @@ export default {
     }
   },
   methods: {
-    nextSection: function (el) {
+    nextSection: function (event, el) {
       let id = null
       if (isNaN(el) && el !== null) {
         event.preventDefault()
-        const delta = event.wheelDelta.toString()
-        const scrollEl = delta.indexOf('-') === 0 ? el.nextElementSibling : el.previousElementSibling
+        const delta = event.deltaY.toString()
+        const scrollEl = delta.indexOf('-') !== 0 ? el.nextElementSibling : el.previousElementSibling
         if (scrollEl) {
           id = '#' + scrollEl.getAttribute('id')
-          const prevNavLinks = document.querySelector('.nav-item.active')
-          const nextLink = document.querySelector(".nav-menu [href*='" + id + "']")
-          prevNavLinks.classList.remove('active')
           this.activeSection = id
-          nextLink.parentElement.classList.add('active')
-          if (delta.indexOf('-') === -1) {
+          if (delta.indexOf('-') === 0) {
             el.setAttribute('style', 'transform:translateY(100vh)')
-          } else {
-            document.querySelector(id).setAttribute('style', 'transform:translateY(-100vh)')
           }
+          document.querySelector(id).setAttribute('style', 'transform:translateY(-100vh)')
         }
       } else if (el === null) {
         id = event.target.getAttribute('href')

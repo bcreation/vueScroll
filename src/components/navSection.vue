@@ -2,7 +2,7 @@
   <nav id='navSection' class='nav-bar'> 
     <ul class='nav-menu'>
       <li v-for='(section, key) in sections' class='nav-item' :class="section.link === sectionActive ? 'active' : ''">
-        <a :href='section.link' v-on:click='activeLink(key)' class='nav-link'>{{ section.name }}</a>
+        <a :href='section.link' v-on:click='activeLink($event, key)' class='nav-link'>{{ section.name }}</a>
       </li>
     </ul>
   </nav>
@@ -35,8 +35,8 @@ export default {
   },
   props: ['sectionActive'],
   methods: {
-    activeLink (key) {
-      this.$parent.nextSection(key)
+    activeLink (event, key) {
+      this.$parent.nextSection(event, key)
       this.$parent.activeSection = this.sections[key].link
     }
   }
