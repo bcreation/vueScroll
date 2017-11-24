@@ -1,7 +1,7 @@
 <template>
   <nav id='navSection' class='nav-bar'> 
     <ul class='nav-menu'>
-      <li v-for='(section, key) in sections' class='nav-item' v-bind:class="section.active ? 'active' : ''">
+      <li v-for='(section, key) in sections' class='nav-item' :class="section.link === sectionActive ? 'active' : ''">
         <a :href='section.link' v-on:click='activeLink(key)' class='nav-link'>{{ section.name }}</a>
       </li>
     </ul>
@@ -16,34 +16,28 @@ export default {
       sections: [
         {
           name: 'home',
-          link: '#section01',
-          active: true
+          link: '#section01'
         },
         {
           name: 'works',
-          link: '#section02',
-          active: false
+          link: '#section02'
         },
         {
           name: 'skills',
-          link: '#section03',
-          active: false
+          link: '#section03'
         },
         {
           name: 'contact',
-          link: '#section04',
-          active: false
+          link: '#section04'
         }
       ]
     }
   },
+  props: ['sectionActive'],
   methods: {
     activeLink (key) {
-      for (var i = 0; i < this.sections.length; i++) {
-        this.sections[i].active = false
-      }
-      this.sections[key].active = true
       this.$parent.nextSection(key)
+      this.$parent.activeSection = this.sections[key].link
     }
   }
 }

@@ -8,6 +8,7 @@
 export default {
   name: 'section-01',
   mounted () {
+    this.$parent.activeSection = '#' + this.$el.getAttribute('id')
     this.$el.addEventListener('wheel', this.handleScroll)
   },
   destroyed () {
